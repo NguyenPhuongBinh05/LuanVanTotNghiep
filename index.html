@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phát Hiện & Đếm Côn Trùng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🐞 HỆ THỐNG ĐẾM VÀ PHÁT HIỆN CÔN TRÙNG 🦋</h1>
+        <form id="upload-form">
+            <input type="file" id="image-upload" accept="image/*" required>
+            <button type="submit">Tải ảnh</button>
+        </form>
+
+        <form id="upload-video-form">
+            <input type="file" id="video-upload" accept="video/*" required>
+            <button type="submit">Tải video</button>
+        </form>
+
+        <div id="loading" class="hidden">Đang xử lý ảnh...</div>
+        <div id="loading-video" class="hidden">Đang xử lý video...</div>
+
+        <div id="result" class="hidden">
+            <h2>Kết Quả:</h2>
+            <div class="images">
+                <div>
+                    <p>Ảnh Gốc:</p>
+                    <img id="original-image" src="" alt="Ảnh gốc">
+                </div>
+                <div>
+                    <p>Ảnh Nhận Diện:</p>
+                    <img id="output-image" src="" alt="Kết quả">
+                </div>
+            </div>
+            <div id="count-result"></div>
+            <a id="download-link" href="#" download><button>Tải Ảnh Kết Quả</button></a>
+        </div>
+
+        <div id="video-result" class="hidden">
+            <h2>Kết Quả Video:</h2>
+            <video id="original-video" controls>
+                <source src="" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+            <div id="count-result-video"></div>
+            <a id="download-video-link" href="#" download><button>Tải Video Kết Quả</button></a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
